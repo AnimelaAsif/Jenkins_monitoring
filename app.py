@@ -2,7 +2,7 @@ import requests
 
 JENKINS_URL = 'http://13.233.29.101:8080'
 USERNAME = 'mohammedasif'
-PASSWORD = 'Rmn@12345'
+PASSWORD = 'Rmn@73383271'
 PIPELINE_NAME = 'monitoring'
 BUILD_NUMBER = '7'
 api_url = f"{JENKINS_URL}/job/{PIPELINE_NAME}/{BUILD_NUMBER}/api/json"
