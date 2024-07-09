@@ -9,8 +9,7 @@ pipeline {
         // }
         stage("Run python file"){
             steps {
-                sh "python3 Jenkins_monitoring/app.py"
-                sh "cat api.log"
+                sh "python3 Jenkins_monitoring/app1.py"
             }
         }
     }
