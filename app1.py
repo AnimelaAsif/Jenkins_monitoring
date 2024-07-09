@@ -51,7 +51,7 @@ def save_build_log_to_file(log_data, filename):
     try:
         with open(filename, 'w') as file:
             file.write(log_data)
-        print(f"Build log saved to {filename} successfully.")
+        # print(f"Build log saved to {filename} successfully.")
     except IOError as e:
         print(f"Failed to write log to {filename}: {e}")
 
