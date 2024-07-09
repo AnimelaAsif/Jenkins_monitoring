@@ -36,7 +36,7 @@ def fetch_build_log(username, password, pipeline_name, build_number):
         response = requests.get(build_url, auth=auth)
         response.raise_for_status()
         build_info = response.json()
-        console_log_url = f"{build_info['url']}/console/api/json"
+        console_log_url = f"{build_info['url']}console/api/json"
         console_log_response = requests.get(console_log_url, auth=auth)
         console_log_response.raise_for_status()
         console_log = console_log_response.text
