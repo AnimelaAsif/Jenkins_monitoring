@@ -1,8 +1,8 @@
 import requests
 import json
-JENKINS_URL = 'http://13.127.102.232:8080'
+JENKINS_URL = 'http://13.201.73.174:8080/'
 USERNAME = 'mohammedasif'
-PASSWORD = '++++++++'
+PASSWORD = 'Rmn@73383271'
 PIPELINE_NAME = 'monitoring'
 BUILD_NUMBER = '7'
 api_url = f"{JENKINS_URL}/job/{PIPELINE_NAME}/{BUILD_NUMBER}/api/json"
