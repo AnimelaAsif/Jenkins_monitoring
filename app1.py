@@ -51,7 +51,7 @@ def save_build_log_to_file(log_data, filename):
     try:
         with open(filename, 'w') as file:
             file.write(log_data)
-        # print(f"Build log saved to {filename} successfully.")
+        print(f"Build log saved to {filename} successfully.")
     except IOError as e:
         print(f"Failed to write log to {filename}: {e}")
 
@@ -60,7 +60,7 @@ if __name__ == "__main__":
     username = 'mohammedasif'
     password = 'Rmn@73383271'
     pipeline_name = 'monitoring'
-    filename = 'build_numbers.log'
+    filename = 'build_data.log'
     
     latest_builds = fetch_latest_build_numbers(username, password, pipeline_name)
     
@@ -75,7 +75,7 @@ if __name__ == "__main__":
         for build_number in latest_builds:
             log_data = fetch_build_log(username, password, pipeline_name, build_number)
             if log_data:
-                log_filename = os.path.join(logs_folder, f"build_number_{build_number}.log")
+                log_filename = os.path.join(logs_folder, f"{build_number}.log")
                 save_build_log_to_file(log_data, log_filename)
             else:
                 print(f"Skipping build {build_number} log.")
