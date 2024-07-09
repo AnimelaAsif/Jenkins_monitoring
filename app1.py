@@ -36,7 +36,7 @@ def fetch_build_log(username, password, pipeline_name, build_number):
         response = requests.get(build_url, auth=auth)
         response.raise_for_status()
         build_info = response.json()
-        console_log_url = f"{build_info['url']}consoleText/api/json"
+        console_log_url = f"{build_info['url']}/api/json"
         console_log_response = requests.get(console_log_url, auth=auth)
         console_log_response.raise_for_status()
         console_log = console_log_response.text
@@ -65,8 +65,8 @@ if __name__ == "__main__":
     latest_builds = fetch_latest_build_numbers(username, password, pipeline_name)
     
     if latest_builds:
-        print(f"Latest {len(latest_builds)} build numbers of {pipeline_name}:")
-        print(latest_builds)
+        # print(f"Latest {len(latest_builds)} build numbers of {pipeline_name}:")
+        # print(latest_builds)
         save_build_numbers_to_file(latest_builds, filename)
         
         logs_folder = 'logs'
