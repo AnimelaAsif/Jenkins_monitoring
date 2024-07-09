@@ -1,33 +1,33 @@
 import requests
 from requests.auth import HTTPBasicAuth
 
-jenkins_url = 'http://13.201.188.119:8080'
-pipeline_name = 'monitoring'
-
-build_count = 18
-api_endpoint = f"{jenkins_url}/job/{pipeline_name}/api/json"
-
-username = 'mohammedasif'
-password = 'Rmn@73383271'
-
-try:
-    response = requests.get(api_endpoint, 
-                            auth=HTTPBasicAuth(username, password),
-                            params={'tree': 'builds[number,timestamp,result]'})
-    response.raise_for_status()
-    pipeline_data = response.json()
-
-    builds = pipeline_data['builds'][:build_count]
+def fetch_latest_build_numbers(username, password, pipeline_name, count=18):
+    jenkins_url = 'http://13.201.73.174:8080'
+    job_url = f'{jenkins_url}/job/{pipeline_name}/api/json'
+    auth = HTTPBasicAuth(username, password)
     
-    print(f"Latest {len(builds)} builds of pipeline '{pipeline_name}':")
-    for build in builds:
-        build_number = build['number']
-        build_timestamp = build['timestamp']
-        build_result = build['result']
+    try:
+        response = requests.get(job_url, auth=auth)
+        response.raise_for_status()
+        job_info = response.json()
         
-        print(f"Build #{build_number} | Result: {build_result} | Timestamp: {build_timestamp}")
+        builds = job_info['builds'][:count]
+        build_numbers = [build['number'] for build in builds]
         
-except requests.exceptions.RequestException as e:
-    print(f"Error fetching data from Jenkins API: {e}")
-except KeyError:
-    print("Unexpected response format from Jenkins API.")
+        return build_numbers
+    
+    except requests.exceptions.RequestException as e:
+        print(f"Failed to fetch Jenkins data: {e}")
+        return []
+
+if __name__ == "__main__":
+    username = 'mohammedasif'
+    password = 'Rmn@73383271'
+    pipeline_name = 'monitoring'
+    latest_builds = fetch_latest_build_numbers(username, password, pipeline_name)
+    
+    if latest_builds:
+        print(f"Latest {len(latest_builds)} build numbers of {pipeline_name}:")
+        print(latest_builds)
+    else:
+        print("Failed to fetch build numbers.")
