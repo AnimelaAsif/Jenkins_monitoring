@@ -9,6 +9,7 @@ pipeline {
         // }
         stage("Run python file"){
             steps {
+                sh "ls"
                 sh "python3 app1.py"
             }
         }
