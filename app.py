@@ -1,6 +1,6 @@
 import requests
 import json
-JENKINS_URL = 'http://13.201.73.174/:8080/'
+JENKINS_URL = 'http://13.201.73.174:8080/'
 USERNAME = 'mohammedasif'
 PASSWORD = 'Rmn@73383271'
 PIPELINE_NAME = 'monitoring'
