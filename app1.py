@@ -5,7 +5,7 @@ def fetch_console_output(job_name, build_number):
     api_url = f'{base_url}job/{job_name}/{build_number}/consoleText'
 
     try:
-        response = requests.get(api_url, auth=('your_username', 'your_api_token_or_password'))
+        response = requests.get(api_url, auth=('mohammedasif', 'Rmn@73383271'))
 
         if response.status_code == 200:
             return response.text
