@@ -29,7 +29,7 @@ def save_to_file(console_output, filename):
 if __name__ == "__main__":
     job_name = 'monitoring'
     build_number = '1'
-    # output_file = f'{build_number}t.log'
+    output_file = f'{build_number}t.log'
 
     console_output = fetch_console_output(job_name, build_number)
     if console_output:
