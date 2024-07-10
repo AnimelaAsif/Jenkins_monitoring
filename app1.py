@@ -28,8 +28,8 @@ def save_to_file(console_output, filename):
 # Example usage:
 if __name__ == "__main__":
     job_name = 'monitoring'
-    build_number = '1'
-    output_file = f'{build_number}t.log'
+    build_number = '5'
+    output_file = f'{build_number}.log'
 
     console_output = fetch_console_output(job_name, build_number)
     if console_output:
