@@ -17,12 +17,20 @@ def fetch_console_output(job_name, build_number):
         print(f"Failed to fetch console output: {str(e)}")
         return None
 
+def save_to_file(console_output, filename):
+    try:
+        with open(filename, 'w') as file:
+            file.write(console_output)
+        print(f"Console output saved to {filename}")
+    except IOError as e:
+        print(f"Failed to write to file: {str(e)}")
+
 # Example usage:
 if __name__ == "__main__":
     job_name = 'monitoring'
     build_number = '1'
+    output_file = 'f"{build_number}.log'
 
     console_output = fetch_console_output(job_name, build_number)
     if console_output:
-        print(f"Console output for job '{job_name}' build #{build_number}:")
-        print(console_output)
+        save_to_file(console_output, output_file)
